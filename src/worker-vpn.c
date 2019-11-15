@@ -1991,7 +1991,8 @@ static int connect_handler(worker_st * ws)
 
 		oclog(ws, LOG_INFO, "adding DNS %s", ws->user_config->dns[i]);
 		ret =
-		    cstp_printf(ws, "X-CSTP-DNS: %s\r\n",
+		    cstp_printf(ws, "X-CSTP-%s: %s\r\n",
+			       ip6 ? "DNS-IP6" : "DNS",
 			       ws->user_config->dns[i]);
 		SEND_ERR(ret);
 	}
